@@ -1,6 +1,24 @@
 # Unicorn proxy with Nginx
 
-* replace the nginx.conf and sites-available conf from my repo
+* clone and use the nginx.conf and sites-available conf from my repo
+
+> Goto to nginx/sites-enabled directory and create a symlink to sites-available conf
+
+```
+cd /etc/nginx/sites-enabled
+```
+
+```
+ln -s /etc/nginx/sites-available/appname appname
+```
+
+> Restart nignx
+
+```
+sudo service nginx restart
+```
+
+# For Unicorn configurations
 
 > place the unicorn.rb in the app/config/
 
