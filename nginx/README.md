@@ -1,7 +1,9 @@
 # Unicorn proxy with Nginx
 
 * replace the nginx.conf and sites-available conf from my repo
+
 > place the unicorn.rb in the app/config/
+
 * create a unicorn directory in /etc
 
 ```
