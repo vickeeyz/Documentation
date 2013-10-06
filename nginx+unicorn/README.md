@@ -1,6 +1,24 @@
 # Unicorn proxy with Nginx
 
-* clone and use the nginx.conf and sites-available conf from my repo
+* Download the nginx.conf and sites-available conf from my repo
+
+```
+cd /etc/nginx/
+```
+
+```
+wget https://raw.github.com/vickeeyz/scripts/master/nginx+unicorn/nginx/nginx.conf
+```
+
+```
+cd /etc/nginx/sites-available/
+```
+
+```
+wget https://raw.github.com/vickeeyz/scripts/master/nginx+unicorn/nginx/sites-available/appname
+```
+
+**NOTE:** Make sure to open and edit the conf to replace appname with your appname
 
 > Goto to nginx/sites-enabled directory and create a symlink to sites-available conf
 
@@ -22,21 +40,48 @@ sudo service nginx restart
 
 > place the unicorn.rb in the app/config/
 
+```
+cd /home/user/sites/appname/config/
+```
+
+```
+wget https://raw.github.com/vickeeyz/scripts/master/nginx+unicorn/unicorn/unicorn.rb
+```
+
 * create a unicorn directory in /etc
 
 ```
 sudo mkdir /etc/unicorn 
 ```
 
-> place the app.conf file in /etc/unicorn
+> download the app.conf file in /etc/unicorn
+
+```
+cd /etc/unicorn/
+```
+
+```
+wget https://raw.github.com/vickeeyz/scripts/master/nginx+unicorn/unicorn/appname.conf
+```
+
 > modify it as per your requirement
 
 ```
 sudo nano /etc/unicorn/app.conf
 ```
 
-> place the unicorn.sh script in /etc/init.d/
+> download the unicorn.sh script in /etc/init.d/
+
+```
+cd /etc/init.d/
+```
+
+```
+wget https://raw.github.com/vickeeyz/scripts/master/nginx+unicorn/unicorn/unicorn.sh
+```
+
 > save the script with name unicorn
+
 > make the unicorn init script executable
 
 ```
