@@ -1,54 +1,50 @@
-# Unicorn proxy with Nginx
+### Server Scripts
 
-* clone and use the nginx.conf and sites-available conf from my repo
+* AWS Cloudformation Templates:
 
-> Goto to nginx/sites-enabled directory and create a symlink to sites-available conf
+> AutoScaling-MultipleZones-LoadBalanced.template
+> AutoScaling-MultipleZones-LoadBalanced-Notifications.template
 
-```
-cd /etc/nginx/sites-enabled
-```
+* Lamp-Stack
 
-```
-ln -s /etc/nginx/sites-available/appname appname
-```
+> lamp-stack-MultiZone.template
+> lamp-stack-single-instance.template
+> lamp-stack-single-instance-with-RDS.template
 
-> Restart nignx
+* RubyonRails
 
-```
-sudo service nginx restart
-```
+> Rails-Multi-AZ.template
+> Rails-Single-Instance.template
+> Rails-Single-Instance-With-RDS.template
 
-# For Unicorn configurations
+* Redis Configuration:
 
-> place the unicorn.rb in the app/config/
+> redis.conf
 
-* create a unicorn directory in /etc
+* Sidekiq init script:
 
-```
-sudo mkdir /etc/unicorn 
-```
+> sidekiq.sh
 
-> place the app.conf file in /etc/unicorn
-> modify it as per your requirement
+* Nginx+Unicorn configurations
 
-```
-sudo nano /etc/unicorn/app.conf
-```
+> nginx.conf
+>> /etc/nginx/sites-available/app.conf
 
-> place the unicorn.sh script in /etc/init.d/
-> save the script with name unicorn
-> make the unicorn init script executable
+> /etc/init.d/unicorn.sh
+> /etc/unicorn/app.conf(for multiple apps running on unicorn)
+> sites/app/config/unicorn.rb
 
-```
-chmod +x /etc/init.d/unicorn
-```
+* Monit monitoring for following services :
+> monitrc
+> /etc/monit/conf.d/services.conf
+>> nginx
+>> unicorn
+>> postgresql
+>> mysql
+>> memcached
+>> php5-fpm
 
-```
-update-rc.d unicorn defaults
-```
+* Vagrant Setup Guide
 
-Now start the unicorn service
+> Setup Ubuntu 12.04 LTS server on Vagrant
 
-```
-sudo service unicorn restart
-```
