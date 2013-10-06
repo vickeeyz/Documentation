@@ -1,0 +1,96 @@
+# Error page configuration is also included.
+# Nginx server block configuration with proxy_pass to Unicorn upstream
+
+upstream app_name {
+ server              unix:/home/user/sites/app_name/tmp/unicorn.sock fail_timeout=0;
+}
+server {
+ ssl                 off;
+ listen              80;
+ server_name         www.example.com;
+ root                /home/user/sites/app_name/current/public;
+ try_files           $uri /system/maintenance.html @app_name;
+ access_log          off;
+ error_log           off;
+ error_page          500 502 504  /500.html;
+ error_page          503 @503;
+
+
+ location @app_name {
+   proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+   proxy_set_header  X-Forwarded-Proto $scheme;
+   proxy_set_header  Host $http_host;
+   proxy_redirect    off;
+   proxy_pass        http://app_name;
+   #limit_req         zone=one;
+   access_log        off;
+   error_log         logs/app_name.unicorn.error.log;
+ }
+
+#location ~* \.(js|css|png|jpg|gif)$ {
+#   if ($query_string ~ "^[0-9]+$") {
+#    expires max;
+#     break;
+#    }
+#  } 
+
+#
+# This block will help us to serve static content in this folders please see that there are no ruby
+# files in this folder
+#
+
+# location ~ ^/(assets|images|javascripts|stylesheets|swfs|system)/{
+#    gzip_static       on;
+#    expires           max;
+#    add_header        Cache-Control public;
+#    #add_header       Last-Modified "";
+#    #add_header       ETag "";
+#    open_file_cache          max=1000 inactive=500s;
+#    open_file_cache_valid    600s;
+#    open_file_cache_errors   on;
+#    access_log        off;
+#    break;
+# }
+  
+ location = /50x.html {
+     root            html;
+ }
+  
+ location = /404.html {
+     root            html;
+ }
+  
+ location @503 {
+   error_page 405 = /system/maintenance.html;
+   if (-f $document_root/system/maintenance.html) {
+     rewrite         ^(.*)$ /system/maintenance.html break;
+   }
+   rewrite           ^(.*)$ /503.html break;
+ }
+ 
+# 
+# This bock will help us to allow specific request method
+# Currently this is allowing only this request method GET|HEAD|PUT|POST|DELETE|OPTIONS
+#
+ if ($request_method !~ ^(GET|HEAD|PUT|POST|DELETE|OPTIONS)$ ){
+   return            405;
+ }
+  
+# 
+# This block will help us to allow specific request method
+# Currently this is allowing only this request method GET|HEAD|PUT|POST|DELETE|OPTIONS
+#
+  
+ if (-f $document_root/system/maintenance.html) {
+   return            503;
+ }
+  
+# 
+# This block will restrict static html file to be served
+#
+
+ location ~ \.(html)$ {
+   return            405;
+ }
+
+}
