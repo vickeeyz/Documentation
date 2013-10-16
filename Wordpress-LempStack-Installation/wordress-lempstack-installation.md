@@ -17,6 +17,10 @@ sudo apt-get install mysql-server
 * Setup Wordpress database in MySql
 
 ```
+mysql -u root -p
+```
+
+```
 CREATE DATABASE wordpress;
 ```
 
@@ -58,7 +62,7 @@ sudo nano /etc/nginx/sites-available/wordpress
 
 > Add the following:
 
-**Note:**rename appname with your application name
+**Note:**rename example with your application name
 
 ```
 server {
@@ -67,7 +71,7 @@ server {
         access_log   /var/log/nginx/example.com.access.log;
         error_log    /var/log/nginx/example.com.error.log;
 
-        root /home/user/sites/wordpress;
+        root /home/user//sites/wordpress;
         index index.php;
 
         location / {
@@ -190,11 +194,13 @@ sudo nano /etc/hosts
 
 ## Step 9: Setup wp-admin panel
 
+> Open your Browser and goto following address to setup your admin account
+
 ```
 example.com/wp-admin/install.php
 ```
 
-Set your admin account and login into wordpress dashboard
+> To login into your wordpress dashboard
 
 ```
 example.com/wp-admin
