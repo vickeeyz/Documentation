@@ -22,14 +22,6 @@
 
 > Rails-Single-Instance-With-RDS.template
 
-* Redis Configuration:
-
-> redis.conf
-
-* Sidekiq init script:
-
-> sidekiq.sh
-
 * Nginx+Unicorn configurations
 
 > nginx.conf
@@ -41,6 +33,14 @@
 > /etc/unicorn/app.conf(for multiple apps running on unicorn)
 
 > sites/app/config/unicorn.rb
+
+* Wordpress LEMP Stack Installation Guide
+
+> Install and Setup Wordpress with Nginx, PHP-FPM and MySql
+
+* Vagrant Setup Guide
+
+> Setup Ubuntu 12.04 LTS server on Vagrant
 
 * Monit monitoring for following services :
 
@@ -60,7 +60,11 @@
 
 >> php5-fpm
 
-* Vagrant Setup Guide
+* Redis Configuration:
 
-> Setup Ubuntu 12.04 LTS server on Vagrant
+> redis.conf
+
+* Sidekiq init script:
+
+> sidekiq.sh
 
