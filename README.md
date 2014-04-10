@@ -22,18 +22,6 @@
 
 > Rails-Single-Instance-With-RDS.template
 
-* Nginx+Unicorn configurations
-
-> nginx.conf
-
->> /etc/nginx/sites-available/app.conf
-
-> /etc/init.d/unicorn.sh
-
-> /etc/unicorn/app.conf(for multiple apps running on unicorn)
-
-> sites/app/config/unicorn.rb
-
 * Wordpress LEMP Stack Installation Guide
 
 > Install and Setup Wordpress with Nginx, PHP-FPM and MySql
