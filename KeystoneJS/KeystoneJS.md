@@ -2,6 +2,70 @@
 
 Before you begin, make sure you have [Node.js] (http://nodejs.org/download/) and MongoDB installed.
 
+* Get Node.js source code for compilation from here: http://nodejs.org/download/
+
+or 
+
+* follow below step for quick setup of latest version.
+
+### Node.js Installation Ubuntu
+
+```
+apt-get install python-software-properties
+```
+
+```
+apt-add-repository ppa:chris-lea/node.js
+```
+
+```
+apt-get update
+```
+
+```
+node.js install
+```
+
+```
+apt-get install nodejs
+```
+
+> Check node.js version
+
+```
+node -v
+```
+
+> Outputs
+
+```
+v0.10.20
+```
+
+```
+npm install
+```
+
+> Above command should install npm.
+
+> Check npm version
+
+```
+npm -v
+```
+
+> Outputs
+
+```
+1.4.3
+```
+
+> If for some reason, if you see npm is not installed, you may try running:
+
+```
+sudo apt-get install npm
+```
+
 ### MongoDB Installation Ubuntu
 
 ```
@@ -23,6 +87,8 @@ sudo apt-get install mongodb-org
 ```
 sudo service mongod start
 ```
+
+> You can optionally ensure that MongoDB will start following a system reboot by issuing the following command:
 
 ```
 sudo chkconfig mongod on
