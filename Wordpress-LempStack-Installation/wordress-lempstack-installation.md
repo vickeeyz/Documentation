@@ -71,7 +71,7 @@ server {
         access_log   /var/log/nginx/example.com.access.log;
         error_log    /var/log/nginx/example.com.error.log;
 
-        root /home/user//sites/wordpress;
+        root /home/user/path/sites/wordpress;
         index index.php;
 
         location / {
@@ -133,11 +133,11 @@ cd wordpress
 ```
 
 ```
-cp wordpress/wp-config-sample.php wordpress/wp-config.php
+cp wp-config-sample.php wp-config.php
 ```
 
 ```
-sudo nano wordpress/wp-config.php
+sudo nano wp-config.php
 ```
 
 **NOTE:** Enter the DBName, DBUser, and DBPassword that you created for wordpress database in mysql
