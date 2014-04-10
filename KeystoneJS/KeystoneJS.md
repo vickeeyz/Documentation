@@ -104,7 +104,7 @@ sudo chkconfig mongod on
 > You'll be using the KeystoneJS generator made with Yeoman. In your root directory run:
 
 ```
-npm install -g generator-keystone
+sudo npm install -g generator-keystone
 ```
 
 > Create a folder for your project
@@ -134,3 +134,9 @@ node keystone
 ```
 
 > Then open http://localhost:3000 to view it in your browser.
+
+> To connect to a server other than localhost, add a MONGO_URI setting to the .env file in your Keystone project directory:
+
+```
+MONGO_URI=mongodb://your-server/database-name
+```
