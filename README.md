@@ -26,6 +26,10 @@
 
 > Install and Setup Wordpress with Nginx, PHP-FPM and MySql
 
+* KeystoneJS
+
+> KeystoneJS Installation with Node.js and MongoDB Installation
+
 * Vagrant Setup Guide
 
 > Setup Ubuntu 12.04 LTS server on Vagrant
